@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	getTasks();
+	getCategoryOptions();
 });
 
 const apiKey = 'dBJId6hlkLeuFhjFqosqMGmeHWT5TbSV';
@@ -23,6 +24,23 @@ function getTasks(){
 
 		output += '</ul>';
 		$('#tasks').html(output) ;
+	});
+
+}
+
+function getCategoryOptions(){
+
+	$.get(`https://api.mlab.com/api/1/databases/taskmanager01/collections/categories?apiKey=${apiKey}`,function(data){
+		console.log(data);
+		
+		var output;
+		$.each(data,function(key,category){
+			output += '<option value="'+category.category_name+'">'+category.category_name+'</option>';
+
+		});
+
+		output += '</ul>';
+		$('#category').append(output) ;
 	});
 
 }
