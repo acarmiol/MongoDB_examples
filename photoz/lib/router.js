@@ -6,4 +6,11 @@ Router.map(function(){
 		path:'/',
 		template:'photos'
 	});
+	
+	this.route('addphotos',{
+		path:'/add',
+		template:'addphotos'
+	});
+	
+
 }); 
